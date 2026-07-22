@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'Vazirmatn'; 
+    src: url('Vazirmatn-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: rgb(243, 245, 248);
+    font-family: 'Vazirmatn';
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    direction: rtl;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+.card {
+    background: white;
+    padding: 32px;
+    border-radius: 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.04),
+        0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.spinner {
+    width: 52px;
+    height: 52px;
+
+    border-radius: 50%;
+    border: 5px solid rgba(20, 113, 236, 0.15);
+    border-top-color: rgb(20, 113, 236);
+
+    animation: spin 1s linear infinite;
+}
+
+.text {
+    color: rgb(20, 113, 236);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -1,11 +1,7 @@
 const config = {
   appId: "com.gordeh.app",
   appName: "گرده",
-  webDir: "www",
-  server: {
-    url: 'https://gordeh.com',
-    cleartext: false
-  }
+  webDir: "www"
 };
 
 module.exports = config;

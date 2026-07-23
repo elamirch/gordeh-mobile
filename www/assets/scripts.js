@@ -1,3 +1,3 @@
 setTimeout(() => {
-    window.location.replace("https://gordeh.com");
+    window.location.replace("https://gordeh.com/panel");
 }, 1000);

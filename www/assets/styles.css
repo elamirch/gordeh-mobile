@@ -50,10 +50,50 @@ body {
     animation: spin 1s linear infinite;
 }
 
+.hidden {
+    display: none;
+}
+
 .text {
     color: rgb(20, 113, 236);
     font-size: 18px;
     font-weight: 600;
+}
+
+.icon {
+    width: 64px;
+    height: 64px;
+
+    border-radius: 50%;
+    background: rgb(20, 113, 236);
+
+    color: white;
+    font-size: 36px;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.retry-btn {
+    background: rgb(20, 113, 236);
+    color: white;
+
+    border: none;
+    border-radius: 12px;
+
+    padding: 12px 40px;
+
+    font-family: 'Vazirmatn';
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.retry-btn:active {
+    background: rgb(15, 90, 190);
 }
 
 @keyframes spin {

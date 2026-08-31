@@ -1,3 +1,5 @@
 node_modules
 android/app/build
 android/build
+android/*.keystore
+android/keystore.properties

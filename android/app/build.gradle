@@ -1,5 +1,19 @@
 apply plugin: 'com.android.application'
 
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('keystore.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+def versionCodeFromGit = {
+    try {
+        return 'git rev-list --count HEAD'.execute().text.trim().toInteger()
+    } catch (Exception e) {
+        return 1
+    }
+}
+
 android {
     namespace = "com.gordeh.app"
     compileSdk = rootProject.ext.compileSdkVersion
@@ -7,7 +21,7 @@ android {
         applicationId "com.gordeh.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
+        versionCode versionCodeFromGit()
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
@@ -16,10 +30,19 @@ android {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    signingConfigs {
+        release {
+            storeFile rootProject.file(System.getenv('ANDROID_KEYSTORE_PATH') ?: keystoreProperties.getProperty('storeFile', ''))
+            storePassword System.getenv('ANDROID_KEYSTORE_PASSWORD') ?: keystoreProperties.getProperty('storePassword', '')
+            keyAlias System.getenv('ANDROID_KEY_ALIAS') ?: keystoreProperties.getProperty('keyAlias', '')
+            keyPassword System.getenv('ANDROID_KEY_PASSWORD') ?: keystoreProperties.getProperty('keyPassword', '')
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }

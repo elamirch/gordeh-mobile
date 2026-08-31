@@ -1,0 +1,29 @@
+// Build init script: routes all Maven resolution through the Myket mirror
+// of Google's Maven repo (dl.google.com is blocked on this network).
+//
+// Usage:
+//   ./gradlew -I gordeh-mirror.init.gradle assembleDebug
+//
+// Repos are added FIRST so Gradle resolves everything from the mirror and
+// never needs to contact dl.google.com.
+
+def myketMirror = {
+    maven { url 'https://maven.myket.ir' }
+    mavenCentral()
+    gradlePluginPortal()
+}
+
+settingsEvaluated { settings ->
+    settings.pluginManagement.repositories {
+        maven { url 'https://maven.myket.ir' }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+allprojects {
+    buildscript {
+        repositories myketMirror
+    }
+    repositories myketMirror
+}

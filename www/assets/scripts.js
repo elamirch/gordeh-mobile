@@ -1,4 +1,5 @@
 const TARGET_URL = 'https://gordeh.com/panel';
+const DEEP_LINK_HOST = 'https://gordeh.com';
 const PROBE_TIMEOUT_MS = 5000;
 const RETRY_COUNTDOWN_SECONDS = 5;
 
@@ -12,6 +13,28 @@ const FA_DIGITS = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
 
 let countdownTimer = null;
 let isChecking = false;
+let pendingUrl = null;
+
+function getTargetUrl() {
+    if (pendingUrl && pendingUrl.indexOf(DEEP_LINK_HOST) === 0) {
+        return pendingUrl;
+    }
+    return TARGET_URL;
+}
+
+function setupDeepLink() {
+    if (!window.Capacitor || typeof window.Capacitor.registerPlugin !== 'function') {
+        return;
+    }
+
+    const App = window.Capacitor.Plugins.App || window.Capacitor.registerPlugin('App');
+
+    App.addListener('appUrlOpen', (data) => {
+        if (data && data.url) {
+            pendingUrl = data.url;
+        }
+    });
+}
 
 function toFaDigits(num) {
     return String(num)
@@ -80,7 +103,7 @@ function checkConnection() {
     })
         .then(() => {
             clearTimeout(timeout);
-            window.location.replace(TARGET_URL);
+            window.location.replace(getTargetUrl());
         })
         .catch(() => {
             clearTimeout(timeout);
@@ -92,4 +115,5 @@ function checkConnection() {
 retryBtn.addEventListener('click', checkConnection);
 window.addEventListener('online', checkConnection);
 
+setupDeepLink();
 checkConnection();

@@ -54,6 +54,14 @@ body {
     display: none;
 }
 
+.hint {
+    color: rgb(120, 130, 145);
+    font-size: 13px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.6;
+}
+
 .text {
     color: rgb(20, 113, 236);
     font-size: 18px;

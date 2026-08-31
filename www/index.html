@@ -8,7 +8,7 @@
     >
     <title>Gordeh | گرده</title>
     <link rel="stylesheet" href="assets/styles.css">
-    <script src="assets/scripts.js"></script>
+    <script src="assets/scripts.js" defer></script>
 </head>
 
 <body>
@@ -16,11 +16,13 @@
         <img src="assets/logo.png">
         <div class="spinner"></div>
         <div class="text">در حال بارگذاری...</div>
+        <div class="hint">برای تجربه بهتر لطفاً VPN خود را خاموش کنید</div>
     </div>
 
     <div class="card hidden" id="offline-card">
         <div class="icon">!</div>
         <div class="text">اتصال اینترنت برقرار نیست</div>
+        <div class="hint">برای تجربه بهتر لطفاً VPN خود را خاموش کنید</div>
         <button class="retry-btn" id="retry-btn" type="button">تلاش مجدد</button>
     </div>
 </body>

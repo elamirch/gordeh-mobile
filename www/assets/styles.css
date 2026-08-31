@@ -84,6 +84,14 @@ body {
     justify-content: center;
 }
 
+.countdown {
+    color: rgb(20, 113, 236);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    min-height: 20px;
+}
+
 .retry-btn {
     background: rgb(20, 113, 236);
     color: white;
@@ -98,10 +106,40 @@ body {
     font-weight: 600;
 
     cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    transition: transform 0.08s ease, background 0.15s ease, opacity 0.15s ease;
 }
 
 .retry-btn:active {
     background: rgb(15, 90, 190);
+    transform: scale(0.96);
+}
+
+.retry-btn:disabled {
+    opacity: 0.85;
+    cursor: default;
+}
+
+.btn-spinner {
+    display: none;
+
+    width: 16px;
+    height: 16px;
+
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: white;
+
+    animation: spin 0.8s linear infinite;
+}
+
+.retry-btn.loading .btn-spinner {
+    display: inline-block;
 }
 
 @keyframes spin {

@@ -3,3 +3,7 @@ android/app/build
 android/build
 android/*.keystore
 android/keystore.properties
+android/.settings
+android/app/.project
+android/app/.settings
+*.launch

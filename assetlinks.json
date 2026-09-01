@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.gordeh.app",
+    "sha256_cert_fingerprints": [
+      "47:E5:94:10:9F:09:D3:80:90:E0:53:8B:80:48:5B:CC:89:63:0A:46:89:C8:C3:EB:2E:BA:B6:F6:95:B9:9D:AE"
+    ]
+  }
+}]

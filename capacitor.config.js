@@ -5,7 +5,7 @@ const config = {
   appendUserAgent: "GordehNativeApp/1.0",
   androidScheme: 'https',
   server: {
-    allowNavigation: ['gordeh.com']
+    allowNavigation: ['gordeh.com', 'www.gordeh.com', 'zarinpal.com', '*.zarinpal.com']
   }
 };
 
